@@ -34,6 +34,8 @@ import { NOVAGuideFloatingWidget } from '../components/guide/NOVAGuideFloatingWi
 import { BotWaveVector } from '../components/guide/BotWaveVector';
 import sriLankaBeautyImg from '../assets/destinations/Sri_lanka_beauty.jpg';
 import websiteLogo from '../assets/website-logo.png';
+import pickmeLogoImg from '../assets/pickme-logo.png';
+import { PickMeLogo } from '../components/icons/PickMeLogo';
 
 export const ToursPage: React.FC = () => {
   const navigate = useNavigate();
@@ -579,6 +581,135 @@ export const ToursPage: React.FC = () => {
           </button>
         </div>
       </section>
+
+      {/* 7. TRANSPORT SECTION - PICKME PARTNER */}
+      <section id="transport-partner-section" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="space-y-12">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto space-y-4">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#16A6A1]/10 text-[#146C86] text-xs font-black uppercase tracking-wider border border-[#16A6A1]/20">
+              <Car className="w-3.5 h-3.5 text-[#16A6A1]" />
+              <span>TRANSPORTATION PARTNER</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0B3A53] tracking-tight font-heading">
+              Need a Ride? We've Got You Covered.
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 font-medium leading-relaxed">
+              Introducing PickMe, NOVA's transportation partner. Get where you need to go with ease and enjoy an exclusive 10% discount on your rides.
+            </p>
+          </div>
+
+          {/* PickMe Premium Partnership Card */}
+          <div className="bg-gradient-to-r from-[#0B3A53] via-[#146C86] to-[#0B3A53] rounded-3xl p-8 sm:p-12 text-white shadow-2xl border border-[#16A6A1]/30 relative overflow-hidden">
+            {/* Ambient Background Glows */}
+            <div className="absolute -right-10 -top-10 w-64 h-64 bg-[#16A6A1]/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div className="absolute -left-10 -bottom-10 w-64 h-64 bg-teal-400/15 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              
+              {/* Left Column: Brand & Copy */}
+              <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 border border-white/20 text-teal-300 text-xs font-black uppercase tracking-wider backdrop-blur-md">
+                  <Car className="w-3.5 h-3.5 text-teal-300" />
+                  <span>YOUR JOURNEY DOESN'T STOP HERE</span>
+                </div>
+
+                <div className="space-y-3">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-teal-200 block">
+                    Meet Our Transportation Partner
+                  </span>
+                  <div className="flex items-center justify-center lg:justify-start pt-1">
+                    <img
+                      src={pickmeLogoImg}
+                      alt="PickMe Logo"
+                      className="h-28 sm:h-36 md:h-44 w-auto object-contain rounded-3xl drop-shadow-2xl hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </div>
+
+                <p className="text-sm sm:text-base text-slate-100 font-medium leading-relaxed max-w-xl">
+                  Travel around Sri Lanka with ease. Download the PickMe app through NOVA and enjoy 10% off your eligible rides.
+                </p>
+
+                {/* 3 Transport Feature Items */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-left hover:bg-white/15 transition-all">
+                    <div className="text-xl mb-1">🚗</div>
+                    <h4 className="text-xs font-black text-white font-heading">Private Rides</h4>
+                    <p className="text-[11px] text-slate-200 font-medium leading-tight mt-1">
+                      Arrange convenient private transportation for getting around your destination.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-left hover:bg-white/15 transition-all">
+                    <div className="text-xl mb-1">📍</div>
+                    <h4 className="text-xs font-black text-white font-heading">Destination Transfers</h4>
+                    <p className="text-[11px] text-slate-200 font-medium leading-tight mt-1">
+                      Use PickMe when travelling between attractions, hotels and other locations.
+                    </p>
+                  </div>
+
+                  <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-left hover:bg-white/15 transition-all">
+                    <div className="text-xl mb-1">🧳</div>
+                    <h4 className="text-xs font-black text-white font-heading">Easy Travel</h4>
+                    <p className="text-[11px] text-slate-200 font-medium leading-tight mt-1">
+                      Arrange transportation through PickMe while keeping your trip planning inside NOVA.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column: Prominent 10% OFF Badge & CTA */}
+              <div className="lg:col-span-5 flex flex-col items-center justify-center text-center space-y-6 bg-slate-900/60 backdrop-blur-xl border border-white/20 rounded-3xl p-8 shadow-2xl">
+                <div className="space-y-2">
+                  <span className="text-xs font-black uppercase tracking-widest text-teal-300 block">
+                    EXCLUSIVE PARTNER OFFER
+                  </span>
+                  <div className="inline-block bg-[#16A6A1] text-slate-950 font-black text-4xl sm:text-5xl px-7 py-3 rounded-2xl shadow-xl font-heading tracking-tight">
+                    10% OFF
+                  </div>
+                  <span className="text-sm font-extrabold text-white block pt-1">
+                    YOUR RIDES
+                  </span>
+                </div>
+
+                <p className="text-xs text-slate-200 font-medium max-w-xs leading-relaxed">
+                  Download PickMe and arrange your ride. Enjoy 10% off eligible rides with PickMe.
+                </p>
+
+                <div className="w-full space-y-3">
+                  <a
+                    href="https://pickme.lk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => triggerToast('Redirecting to PickMe app destination...')}
+                    className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#16A6A1] via-teal-400 to-emerald-400 hover:from-teal-300 hover:to-emerald-300 text-slate-950 text-sm font-black transition-all duration-300 shadow-xl flex items-center justify-center gap-2 cursor-pointer group"
+                  >
+                    <span>Get 10% Off with PickMe →</span>
+                  </a>
+
+                  <a
+                    href="https://pickme.lk"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => triggerToast('Redirecting to PickMe app destination...')}
+                    className="inline-flex items-center gap-1.5 text-xs font-extrabold text-teal-300 hover:text-white transition-colors cursor-pointer"
+                  >
+                    <span>Need transportation? Use PickMe →</span>
+                  </a>
+                </div>
+
+                <p className="text-[10px] text-slate-300 italic font-medium">
+                  *Terms and eligibility may apply.
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+
 
 
 

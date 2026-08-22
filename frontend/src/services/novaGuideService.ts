@@ -9,6 +9,7 @@ export interface NOVAGuideMessage {
   imageCaption?: string;
   suggestions?: string[];
   recommendedPackage?: TravelPackage;
+  showPickMePartnerCard?: boolean;
 }
 
 export class NOVAGuideService {
@@ -26,6 +27,8 @@ export class NOVAGuideService {
     let replyText = '';
     let suggestions: string[] = [];
     let recommendedPackage: TravelPackage | undefined = undefined;
+
+    let showPickMePartnerCard = false;
 
     // 1. IMAGE-BASED ANALYSIS
     if (imageFileOrUrl) {
@@ -78,7 +81,31 @@ export class NOVAGuideService {
         ];
       }
     } 
-    // 2. TEXT-BASED QUERY ANALYSIS
+    // 2. TRANSPORT & PICKME PARTNER QUERIES
+    else if (
+      textLower.includes('pickme') ||
+      textLower.includes('ride') ||
+      textLower.includes('transport') ||
+      textLower.includes('taxi') ||
+      textLower.includes('cab') ||
+      textLower.includes('colombo to galle') ||
+      textLower.includes('get to sigiriya') ||
+      textLower.includes('around kandy') ||
+      textLower.includes('airport') ||
+      textLower.includes('easiest way to get') ||
+      textLower.includes('best transport option') ||
+      textLower.includes('get around')
+    ) {
+      replyText = `For a convenient private journey, you can arrange transportation through our partner PickMe.`;
+      showPickMePartnerCard = true;
+      suggestions = [
+        'Get 10% Off with PickMe',
+        'How to book train tickets?',
+        '🗺 Plan a 1-day itinerary',
+        '📍 Recommended places to visit'
+      ];
+    }
+    // 3. BUDGET & DURATION QUERIES
     else if (textLower.includes('budget') || textLower.includes('days') || textLower.includes('$') || textLower.includes('cost')) {
       replyText = `**I found a travel package that matches your trip criteria!** 🎒\n\nBased on your budget and duration preference, our **Sri Lanka Highlights** package covers Colombo, Kandy, Ella, and Galle with full transport and boutique stays.`;
       recommendedPackage = TRAVEL_PACKAGES[0]; // Sri Lanka Highlights
@@ -108,20 +135,13 @@ export class NOVAGuideService {
         'Show packages in Galle',
         'How do I travel around?'
       ];
-    } else if (textLower.includes('get there') || textLower.includes('transport') || textLower.includes('train')) {
-      replyText = `🚗 **Transportation Guide:**\n\n- **Scenic Train:** The Kandy-to-Ella train ride is world-famous! Reserve 1st or 2nd Class reserved seats 30 days in advance.\n- **Private Vehicle:** Renting a private car with a dedicated driver is the most comfortable way for multi-city travel.\n- **Tuk-Tuk:** Great for short local town commutes!`;
-      suggestions = [
-        'How to book train tickets?',
-        'Cost of private car rental?',
-        'Safety tips for travelers'
-      ];
     } else {
-      replyText = `Hello! I'm **NOVA Guide**, your AI travel companion. 🤖✨\n\nI can answer questions about Sri Lanka's destinations, identify uploaded photos of landmarks or food, generate day itineraries, suggest travel packages within your budget, and help you navigate local culture. What would you like to discover today?`;
+      replyText = `Hello! I'm **NOVA Guide**, your AI travel companion. 🤖✨\n\nI can answer questions about Sri Lanka's destinations, identify uploaded photos of landmarks or food, generate day itineraries, suggest travel packages within your budget, recommend PickMe transport discounts, and help you navigate local culture. What would you like to discover today?`;
       suggestions = [
         '📸 Identify an uploaded image',
+        '🚗 What\'s the easiest way to get from Colombo to Galle?',
         '🗺 Plan a 1-day itinerary',
-        '📍 Recommended places to visit',
-        '💰 Recommend packages for $500'
+        '📍 Recommended places to visit'
       ];
     }
 
@@ -131,7 +151,8 @@ export class NOVAGuideService {
       text: replyText,
       timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       suggestions,
-      recommendedPackage
+      recommendedPackage,
+      showPickMePartnerCard
     };
   }
 }
